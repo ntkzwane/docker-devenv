@@ -1,0 +1,19 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:en_ZA.UTF-8
+    environment:
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=
+        - PGDATA=/var/lib/postgresql/data/pgdata
+    container_name: postgres
+    volumes:
+        - "/var/run/postgresql/:/var/run/postgresql/"
+        - "~/Development/data/postgres:/var/lib/postgresql/data/pgdata"
+    ports:
+        - 5435:5432
+    network_mode: "host"
+    build:
+      context: postgres/
+      dockerfile: Dockerfile
+
