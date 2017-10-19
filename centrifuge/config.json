@@ -1,0 +1,5 @@
+{
+  "password": "centrifuge",
+  "cookie_secret": "cent_cookie_secret",
+  "api_secret": "cent_api_secret"
+}

@@ -1,0 +1,13 @@
+version: '3'
+services:
+  centrifuge:
+    image: "bausmeier/centrifuge-mongodb"
+    container_name: "centrifuge"
+    ports:
+      - "8181:8000"
+    command: ["--mongodb_host=mongo", "--logging=debug", "--debug"]
+    volumes:
+      - ./centrifuge/config.json:/data/config.json:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+

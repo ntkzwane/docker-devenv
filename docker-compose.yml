@@ -1,0 +1,23 @@
+version: '3'
+services:
+  mysql:
+    image: "mysql:5.7.17"
+    container_name: "mysql"
+    ports:
+      - "3306:3306"
+    volumes:
+      - ~/Development/data/mysql:/data
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    restart: always
+    command: [
+      "mysqld",
+      "--skip-name-resolve",
+      "--datadir=/data",
+      "--user=mysql",
+      "--max_allowed_packet=16M",
+      "--server-id=1",
+      "--bind-address=0.0.0.0"
+    ]
+
