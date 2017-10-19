@@ -10,7 +10,6 @@ services:
       - ./my.cnf:/etc/mysql/conf.d/my.cnf
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
-    restart: always
     command: [
       "mysqld",
       "--skip-name-resolve",
@@ -20,4 +19,4 @@ services:
       "--server-id=1",
       "--bind-address=0.0.0.0"
     ]
-
+    restart: always
