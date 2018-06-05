@@ -1,0 +1,14 @@
+version: '3'
+services:
+  watchman:
+    build:
+      context: watchman/
+      dockerfile: Dockerfile
+      args:
+        WATCHMAN_VERSION: 4.9.0
+    image: watchman:4.9.0
+    container_name: watchman
+    volumes:
+      - "/usr/local/var/run/watchman/${USER}-state:/usr/local/var/run/watchman/${USER}-state"
+      - "$PROJECT_DIR:$PROJECT_DIR"
+
