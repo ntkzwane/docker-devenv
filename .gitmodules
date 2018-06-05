@@ -1,6 +1,0 @@
-[submodule "kafka-docker"]
-	path = kafka-docker
-	url = git@github.com:wurstmeister/kafka-docker.git
-[submodule "cp-docker-images"]
-	path = cp-docker-images
-	url = git@github.com:confluentinc/cp-docker-images.git
