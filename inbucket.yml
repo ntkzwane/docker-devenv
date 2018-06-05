@@ -1,0 +1,11 @@
+version: '3'
+services:
+  inbucket:
+    image: "jhillyerd/inbucket"
+    container_name: "inbucket"
+    ports:
+      - "2500:2500"
+      - "9010:9000"
+      - "1100:1100"
+    environment:
+      - INBUCKET_MAILBOXNAMING=full
