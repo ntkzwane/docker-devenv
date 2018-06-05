@@ -1,7 +1,7 @@
 version: '3'
 services:
   mongo:
-    image: "mongo:3.4.6"
+    image: "mongo:3.6.3"
     container_name: "mongo"
     ports:
       - "27017:27017"
@@ -11,4 +11,3 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
     restart: always
-    network_mode: "host"
