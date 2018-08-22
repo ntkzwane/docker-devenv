@@ -1,0 +1,13 @@
+version: '3'
+services:
+  mongo:
+    image: "mongo:3.4.6"
+    container_name: "mongo"
+    ports:
+      - "27017:27017"
+    volumes:
+      - ~/Development/data/mongo/db:/data/db
+      - ~/Development/data/mongo/configdb:/data/configdb
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    restart: always
