@@ -1,11 +1,28 @@
 #!/bin/zsh
 
+COMMAND=$1
 DEV_ENV_DIR=/home/ntokozo/Development/projects/dev-env/
-if [ "$1" '==' "up" ] || [ "$1" '==' "start" ]; then
-  docker-compose -f $DEV_ENV_DIR/$2.yml up -d
-elif [ "$1" '==' "down" ] || [ "$1" '==' "stop" ]; then
-  docker-compose -f $DEV_ENV_DIR/$2.yml down
+
+start_services () {
+  for service in "$@"
+  do
+    docker-compose -f $DEV_ENV_DIR/$service.yml up -d
+  done
+}
+
+stop_services () {
+  for service in "$@"
+  do
+    docker-compose -f $DEV_ENV_DIR/$service.yml down
+  done
+}
+
+shift # already have the command, just read in the remaining args
+if [ "$COMMAND" '==' "up" ] || [ "$COMMAND" '==' "start" ]; then
+  start_services $@
+elif [ "$COMMAND" '==' "down" ] || [ "$COMMAND" '==' "stop" ]; then
+  stop_services $@
 else
-  echo "Invalid option $1"
+  echo "Invalid option $COMMAND"
 fi
 
