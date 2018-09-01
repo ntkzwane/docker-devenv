@@ -1,0 +1,23 @@
+#!/bin/bash
+
+PROJECT_ROOT=$(git rev-parse --show-toplevel)
+export IMAGE_TAG=$(git rev-parse --abbrev-ref HEAD)
+
+cd $PROJECT_ROOT
+
+trap cleanup SIGINT
+trap cleanup SIGKILL
+trap cleanup SIGTERM
+trap cleanup SIGSTOP
+trap cleanup EXIT
+
+function cleanup() {
+  docker-compose down --remove-orphans
+}
+
+docker-compose up webpack --rm
+
+RESULT=$?
+[ $RESULT -ne 0 ] && exit 1
+exit 0
+

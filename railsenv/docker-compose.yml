@@ -1,0 +1,76 @@
+version: '3'
+
+volumes:
+  socket:
+    external: false
+  pgdata:
+    external: false
+
+services:
+  db:
+    image: postgres:10.3-alpine
+    container_name: rails_db
+    environment:
+      # the POSTGRES_DB env variable is explicitly not set since the database is created when doing a pg:pull
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=
+    volumes:
+      - socket:/var/run/postgresql/
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    network_mode: "host"
+
+  raw:
+    image: ntkzwane/private:ruby-node-rails
+    container_name: rails_raw
+    volumes:
+      - ./:/app
+      - socket:/var/run/postgresql/
+    depends_on:
+      - db
+    network_mode: "host"
+
+  web:
+    build: .
+    image: ntkzwane/private:ruby-node-rails
+    container_name: rails_server
+    command: rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - ./:/app
+      - socket:/var/run/postgresql/
+    ports:
+      - 3000:3000
+    depends_on:
+      - sidekiq
+      - db
+    network_mode: "host"
+
+  sidekiq:
+    image: ntkzwane/private:ruby-node-rails
+    container_name: sidekiq
+    command: bundle exec sidekiq
+    volumes:
+      - ./:/app
+    depends_on:
+      - db
+      - redis
+    network_mode: "host"
+
+  redis:
+    image: redis:alpine
+    container_name: redis
+    ports:
+      - 6379:6379
+    network_mode: "host"
+
+  webpack:
+    image: ntkzwane/private:ruby-node-rails
+    container_name: rails_webpack
+    volumes:
+      - ./:/app
+    entrypoint: "ruby bin/webpack-dev-server"
+    ports:
+      - 8080:8080
+    network_mode: "host"
+

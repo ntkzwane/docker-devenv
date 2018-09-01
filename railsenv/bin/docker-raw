@@ -1,0 +1,29 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+	echo "Usage: $0 commands-to-run";
+	exit 1;
+fi
+
+SERVER_STATUS=$(IMAGE_TAG=$(git rev-parse --abbrev-ref HEAD) docker-compose ps web | sed -n 3p)
+
+if [[ $SERVER_STATUS = *"Up"* ]]; then
+  IMAGE_TAG=$(git rev-parse --abbrev-ref HEAD) docker exec -it rails_server $*
+else
+  trap cleanup SIGINT
+  trap cleanup SIGKILL
+  trap cleanup SIGTERM
+  trap cleanup SIGSTOP
+  trap cleanup EXIT
+
+  function cleanup() {
+    IMAGE_TAG=$(git rev-parse --abbrev-ref HEAD) docker-compose down --remove-orphans
+  }
+
+  IMAGE_TAG=$(git rev-parse --abbrev-ref HEAD) docker-compose run --rm raw $*
+fi
+
+RESULT=$?
+[ $RESULT -ne 0 ] && exit 1
+exit 0
+

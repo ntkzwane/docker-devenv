@@ -1,0 +1,8 @@
+#!/bin/bash
+
+./bin/docker-raw rails $@
+
+RESULT=$?
+[ $RESULT -ne 0 ] && exit 1
+exit 0
+

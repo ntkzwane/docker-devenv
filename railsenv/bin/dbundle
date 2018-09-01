@@ -1,0 +1,8 @@
+#!/bin/bash
+
+./bin/docker-raw bundle $@
+
+RESULT=$?
+[ $RESULT -ne 0 ] && exit 1
+exit 0
+
