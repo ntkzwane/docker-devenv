@@ -1,0 +1,6 @@
+ awk '
+  /INFO/ {print "\033[32m" $0 "\033[32m"}
+  /DEBUG/ {print "\033[33m" $0 "\033[33m"}
+  /TRACE/ {print "\033[36m" $0 "\033[36m"}
+  /ERROR/ {print "\033[31m" $0 "\033[31m"}
+  /SEVERE/ {print "\033[31m" $0 "\033[39m"}'
