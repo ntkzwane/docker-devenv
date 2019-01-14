@@ -1,7 +1,7 @@
-#!/bin/zsh
+#!/bin/bash
 
 COMMAND=$1
-DEV_ENV_DIR=/home/ntokozo/Development/projects/dev-env/
+DEV_ENV_DIR=/vagrant
 
 start_services () {
   for service in "$@"
