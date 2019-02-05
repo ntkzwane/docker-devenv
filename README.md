@@ -2,7 +2,7 @@
 
 Disclaimer: This readme is not at all thorough. It assumes some basic knowledge of docker and docker-compose or vagrant.
 
-The goal is to be able to setup any project, with all its dependencies, without installing anything other than 'docker'
+The goal is to be able to setup any project, with all its dependencies, without installing anything other than `docker`
 (and `docker-compose`) on your host machine.
 
 # How it works
@@ -33,6 +33,10 @@ vagrant up
 ```
 
 ### Note:
-Currunt binaries that have been configured in the vagrant environment:
+Binaries that have been configured in the vagrant environment:
+
 * Mongo: `mongo`, `mongodump`, `mongorestore`
 
+Port forward mappings that have been configured in the vagrant environment:
+
+* mongo:27017
