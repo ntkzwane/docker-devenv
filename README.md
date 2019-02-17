@@ -24,7 +24,7 @@ dservice stop service-name
 ```
 where `service-name` corresponds to the name of the `docker-compose` file (excluding the `.yml` signature in the
 filename).
-Note: In order to use `dservice.sh`, update the `DEV_ENV_DIR` in the script to point to the directory where this repository is cloned.
+Note: In order to use `dservice.sh`, update the `DEV_ENV_DIR` variable in the script to point to the directory where this repository is cloned.
 
 ## 2. Vagrant
 If you don't want to/can't run docker on your host machine, you can run your whole environment through a virtual
