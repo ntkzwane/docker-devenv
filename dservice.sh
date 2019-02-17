@@ -1,7 +1,8 @@
 #!/bin/bash
 
 COMMAND=$1
-DEV_ENV_DIR=/vagrant
+DEV_ENV_DIR=/home/ntokozo/Development/projects/docker-devenv/
+# DEV_ENV_DIR=/vagrant # default for the vagrant environment
 
 start_services () {
   for service in "$@"
