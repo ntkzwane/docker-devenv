@@ -1,8 +1,13 @@
 #!/bin/bash
 
 COMMAND=$1
-DEV_ENV_DIR=/home/ntokozo/Development/projects/docker-devenv/
+DEV_ENV_DIR=
 # DEV_ENV_DIR=/vagrant # default for the vagrant environment
+
+if [ -z "$DEV_ENV_DIR" ]; then
+  echo "Error: Ensure you have set the 'DEV_ENV_DIR' environment variable"
+  exit 1
+fi
 
 start_services () {
   for service in "$@"
@@ -24,6 +29,6 @@ if [ "$COMMAND" '==' "up" ] || [ "$COMMAND" '==' "start" ]; then
 elif [ "$COMMAND" '==' "down" ] || [ "$COMMAND" '==' "stop" ]; then
   stop_services $@
 else
-  echo "Invalid option $COMMAND"
+  echo "Error: Invalid option $COMMAND"
 fi
 

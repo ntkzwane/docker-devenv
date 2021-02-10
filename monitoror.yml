@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  monitoror:
+    image: ntkzwane/monitoror:arm
+    container_name: monitoror
+    environment:
+      MO_CONFIG: /data/config.json
+    volumes:
+      - /home/pi/Development/projects/monitoror:/data
+    restart: unless-stopped
+    network_mode: host
+

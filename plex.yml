@@ -1,0 +1,16 @@
+version: '2'
+services:
+  plex:
+    container_name: plex
+    image: ntkzwane/pms-docker:arm
+    restart: unless-stopped
+    environment:
+      - TZ=Europe/Dublin
+      - PLEX_CLAIM=$PLEX_CLAIM_TOKEN
+      - HOSTNAME=$HOST
+    network_mode: host
+    volumes:
+      - /var/lib/plexmediaserver/config:/config
+      - /var/lib/plexmediaserver/tmp_transcoding:/transcode
+      - /mnt/Transcend:/data
+

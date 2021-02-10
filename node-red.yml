@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  node-red:
+    image: nodered/node-red:1.0.1-10-minimal-arm32v6
+    command: 
+      - run
+      - start
+      - --
+      - --userDir=/node-red
+    container_name: node-red
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    entrypoint:
+      - npm
+    hostname: raspberrypi
+    ports:
+      - 1880:1880
+    environment:
+      PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/src/node-red/bin
+    volumes:
+      - /home/pi/.node-red:/node-red
+      - /usr/bin:/usr/src/node-red/bin
+    privileged: true
+    pid: host
