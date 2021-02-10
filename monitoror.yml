@@ -7,7 +7,7 @@ services:
     environment:
       MO_CONFIG: /data/config.json
     volumes:
-      - /home/pi/Development/projects/monitoror:/data
+      - $MO_CONFIG:/data
     restart: unless-stopped
     network_mode: host
 
