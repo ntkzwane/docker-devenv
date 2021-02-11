@@ -6,6 +6,7 @@ services:
     container_name: monitoror
     environment:
       MO_CONFIG: /data/config.json
+      MO_MONITORABLE_GITLAB_TOKEN: $MO_MONITORABLE_GITLAB_TOKEN
     volumes:
       - $MO_CONFIG:/data
     restart: unless-stopped

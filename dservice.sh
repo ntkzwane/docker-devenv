@@ -1,7 +1,7 @@
 #!/bin/bash
 
 COMMAND=$1
-DEV_ENV_DIR=
+DEV_ENV_DIR=$DEV_ENV_DIR
 # DEV_ENV_DIR=/vagrant # default for the vagrant environment
 
 if [ -z "$DEV_ENV_DIR" ]; then
