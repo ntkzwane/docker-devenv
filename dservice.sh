@@ -12,14 +12,14 @@ fi
 start_services () {
   for service in "$@"
   do
-    docker-compose -f $DEV_ENV_DIR/$service.yml up -d
+    docker compose -f $DEV_ENV_DIR/$service.yml up -d
   done
 }
 
 stop_services () {
   for service in "$@"
   do
-    docker-compose -f $DEV_ENV_DIR/$service.yml down
+    docker compose -f $DEV_ENV_DIR/$service.yml down
   done
 }
 
