@@ -128,6 +128,8 @@ services:
       - "DB_PASSWORD=${MYSQL_PASSWORD}"
       - "DB_TIMEOUT=60"
       - "SIDECAR_SYSLOGNG=1"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     restart: always
 
   snmptrapd:
@@ -161,6 +163,8 @@ services:
       - "DB_PASSWORD=${MYSQL_PASSWORD}"
       - "DB_TIMEOUT=60"
       - "SIDECAR_SNMPTRAPD=1"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     restart: always
 
 volumes:
