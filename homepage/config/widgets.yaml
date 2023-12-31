@@ -1,12 +1,14 @@
 ---
 # For configuration options and examples, please see:
 # https://gethomepage.dev/latest/configs/service-widgets
-
 - resources:
     cpu: true
     memory: true
-    disk: /
+    cputemp: true
+    expanded: true
+    disk:
+        - /
 
 - search:
-    provider: duckduckgo
+    provider: brave
     target: _blank

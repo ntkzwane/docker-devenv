@@ -23,11 +23,20 @@ stop_services () {
   done
 }
 
+restart_services () {
+  for service in "$@"
+  do
+    docker compose -f $DEV_ENV_DIR/$service.yml restart
+  done
+}
+
 shift # already have the command, just read in the remaining args
 if [ "$COMMAND" '==' "up" ] || [ "$COMMAND" '==' "start" ]; then
   start_services $@
 elif [ "$COMMAND" '==' "down" ] || [ "$COMMAND" '==' "stop" ]; then
   stop_services $@
+elif [ "$COMMAND" '==' "restart" ]; then
+  restart_services $@
 else
   echo "Error: Invalid option $COMMAND"
 fi

@@ -2,17 +2,74 @@
 # For configuration options and examples, please see:
 # https://gethomepage.dev/latest/configs/services
 
-- My First Group:
-    - My First Service:
-        href: http://localhost/
-        description: Homepage is awesome
+- Chambome:
+    - Pi-hole:
+        href: http://pihole.chambome.lo/admin
+        icon: pi-hole.png
+        server: pi3
+        widget:
+          type: pihole
+          url: http://192.168.0.10:8080
+          key: {{HOMEPAGE_VAR_PIHOLE_API_KEY}}
+    - Nginx Proxy Manager:
+        href: http://proxyman.chambome.lo
+        icon: nginx-proxy-manager.png
+        server: pi3
+        container: nginx-proxy-man
+        widget:
+          type: npm
+          url: http://192.168.0.10
+          username: {{HOMEPAGE_VAR_NGINX_PROXY_MAN_USERNAME}}
+          password: {{HOMEPAGE_VAR_NGINX_PROXY_MAN_PASSWORD}}
+    - Speedtest Tracker:
+        href: http://speedtrack.chambome.lo
+        icon: speedtest-tracker.png
+        server: pi4
+        container: speedtest-tracker
+        widget:
+          type: speedtest
+          url: http://192.168.0.17:9080
 
-- My Second Group:
-    - My Second Service:
-        href: http://localhost/
-        description: Homepage is the best
+- Media:
+    - Plex:
+      icon: plex.png
+      server: chambinux
+      widget:
+        type: plex
+        url: http://192.168.0.120:32400
+        key: {{HOMEPAGE_VAR_PLEX_API_KEY}}
+    - Sonarr:
+        href: http://sonarr.chambome.lo
+        icon: sonarr.png
+        server: pi4
+        widget:
+          type: sonarr
+          url: http://192.168.0.17:8989
+          key: {{HOMEPAGE_VAR_SONARR_API_KEY}}
+          enableQueue: true # optional, defaults to false
+    - Radarr:
+        href: http://radarr.chambome.lo
+        icon: radarr.png
+        server: pi4
+        widget:
+          type: radarr
+          url: http://192.168.0.17:7878
+          key: {{HOMEPAGE_VAR_RADARR_API_KEY}}
+          enableQueue: true # optional, defaults to false
+    - Prowlarr:
+        href: http://prowlarr.chambome.lo
+        icon: prowlarr.png
+        server: pi4
+        widget:
+          type: prowlarr
+          url: http://192.168.0.17:9696
+          key: {{HOMEPAGE_VAR_PROWLARR_API_KEY}}
+          enableQueue: true # optional, defaults to false
+    - Transmission:
+        href: http://transmission.chambome.lo
+        icon: transmission.png
+        server: pi4
+        widget:
+            type: transmission
+            url: http://192.168.0.17:9091
 
-- My Third Group:
-    - My Third Service:
-        href: http://localhost/
-        description: Homepage is 😎
