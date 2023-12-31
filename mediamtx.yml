@@ -1,0 +1,15 @@
+version: '3'
+services:
+  mediamtx:
+    privileged: true
+    image: "bluenviron/mediamtx:latest-ffmpeg-rpi"
+    container_name: "mediamtx"
+    volumes:
+      - "./mediamtx/mediamtx.yml:/mediamtx.yml"
+      - "/run/udev:/run/udev:ro"
+    environment:
+      - "RTSP_PATHS_CAM_SOURCE=rpiCamera"
+    network_mode: "host"
+    tmpfs:
+      - /dev/shm:exec
+    restart: unless-stopped
