@@ -9,7 +9,7 @@ services:
       - PUID=1000
       - PGID=1000
     volumes:
-      - /home/ntokozo/Development/data/syncthing:/var/syncthing
+      - ~/Development/data/syncthing:/var/syncthing
     network_mode: host
     restart: unless-stopped
 
