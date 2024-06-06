@@ -3,7 +3,7 @@ services:
     image: jenkins/jenkins:lts
     container_name: jenkins
     ports:
-      - "8080:8080"
+      - "8182:8080"
     volumes:
       - /data/jenkins:/var/jenkins_home
   ssh-agent:
