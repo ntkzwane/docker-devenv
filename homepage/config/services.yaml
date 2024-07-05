@@ -6,10 +6,10 @@
     - Pi-hole:
         href: http://pihole.chambome.lo/admin
         icon: pi-hole.png
-        server: pi3
+        server: pi5
         widget:
           type: pihole
-          url: http://192.168.0.10:8080
+          url: http://192.168.0.206:1234
           key: {{HOMEPAGE_VAR_PIHOLE_API_KEY}}
     - Nginx Proxy Manager:
         href: http://proxyman.chambome.lo
@@ -71,5 +71,5 @@
         server: pi4
         widget:
             type: transmission
-            url: http://192.168.0.17:9091
+            url: http://192.168.0.241:9091
 
