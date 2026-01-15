@@ -1,10 +1,13 @@
 ---
 version: "3"
+x-podman:
+  in_pod: false   
 services:
   syncthing:
     image: syncthing/syncthing
     container_name: syncthing
     hostname: syncting-chambinux
+    userns_mode: keep-id
     environment:
       - PUID=1000
       - PGID=1000
@@ -12,4 +15,5 @@ services:
       - ~/Development/data/syncthing:/var/syncthing
     network_mode: host
     restart: unless-stopped
+
 
